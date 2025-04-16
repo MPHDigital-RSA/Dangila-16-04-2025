@@ -5,7 +5,7 @@ import search from '../assets/Search.svg'
 import cart from '../assets/Basket.svg'
 import profile from '../assets/Profile.svg'
 
-import '../styles/NavBar.css'
+import '../styles/Navbar.css'
 
 function NavBar() {
 
