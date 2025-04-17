@@ -8,6 +8,7 @@
         h1 {
             color: var(--heading-c);
             font-size: 84px;
+
         }
 
         .hero__subheading {
@@ -40,11 +41,35 @@
                 padding-left: 20px;
             }
         }
+
+        @media(width<calc(700/16*1rem)) {
+            text-align: center;
+        }
+
+        @media(width>=calc(700/16*1rem)) {
+            grid-column: 2/5;
+        }
+
+        @media(width>=calc(1200/16*1rem)) {
+            grid-column: 2/7;
+        }
     }
 
     .hero__image {
         grid-column: 1/-1;
         width: 100%;
         height: auto;
+
+        @media(width>=calc(700/16*1rem)) {
+            grid-column: 5/-1;
+        }
+
+        @media(width>=calc(1200/16*1rem)) {
+            grid-column: 7/-1;
+        }
+    }
+
+    @media(width>=calc(700/16*1rem)) {
+        padding-block-end: 80px;
     }
 }
