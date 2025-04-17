@@ -1,6 +1,6 @@
 .hero {
     background-color: var(--hero-bg-c);
-    padding-block-start: 40px;
+    padding-block-start: 120px;
 
     .hero__text {
         grid-column: 2/-2;
@@ -71,5 +71,9 @@
 
     @media(width>=calc(700/16*1rem)) {
         padding-block-end: 80px;
+    }
+
+    @media(width>=calc(1200/16*1rem)) {
+        padding-block-start: 150px;
     }
 }

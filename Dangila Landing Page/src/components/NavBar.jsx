@@ -4,15 +4,20 @@ import menu from '../assets/Menu.svg'
 import search from '../assets/Search.svg'
 import cart from '../assets/Basket.svg'
 import profile from '../assets/Profile.svg'
-import close from '../assets/Close.svg'
+
 
 import '../styles/Navbar.css'
+import MobileNav from './MobileNav'
 
 function NavBar() {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isSearcOpen, setIsSearcOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
 
+    const handleMenuToggle = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
         <header className='wrapper header'>
@@ -27,23 +32,21 @@ function NavBar() {
                     <li><a href="#">team</a></li>
                 </ul>
 
-                {isMenuOpen && <ul className="mobile-menu">
-                    <img src={close} alt="close button" className="close" onClick={() => setIsMenuOpen(!isMenuOpen)} />
-                    <li><a href="#">products</a></li>
-                    <li><a href="#">story</a></li>
-                    <li><a href="#">manufacturing</a></li>
-                    <li><a href="#">packaging</a></li>
-                    <li><a href="#">team</a></li>
-                </ul>}
-
-
                 <div className="search-cart-profile">
                     <img src={search} alt="search icon" width='18.75' height='18.75' />
-                    <img src={cart} alt="cart icon" width='19.69' height='18.98' />
+                    <div className='cart'>
+                        <img src={cart} alt="cart icon" width='19.69' height='18.98' className='cart-image' />
+                        <p className='cart-value'>0</p>
+                    </div>
                     <img src={profile} alt="profile icon" width='17.5' height='19.75' />
                 </div>
 
-                <img src={menu} alt="menu icon" width='37.5' height='21.88' className='menu-icon' onClick={() => setIsMenuOpen(!isMenuOpen)} />
+                <img src={menu} alt="menu icon" width='37.5' height='21.88' className='menu-icon' onClick={handleMenuToggle} />
+
+                {/* conditionals */}
+
+                {isMenuOpen && <MobileNav handleMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} />}
+
 
             </nav>
         </header>

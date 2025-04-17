@@ -2,10 +2,13 @@
     background-color: var(--hero-bg-c);
     padding-block-start: 30px;
     padding-block-end: 30px;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.112);
 
     @media(width>=calc(1200/16*1rem)) {
         padding-block-start: 40px;
-        padding-block-end: 81px;
+        padding-block-end: 40px;
     }
 
     .nav {
@@ -27,11 +30,29 @@
             @media(width>=calc(1200/16*1rem)) {
                 margin-right: 0px;
             }
+
+            .cart {
+                position: relative;
+
+                .cart-value {
+                    position: absolute;
+                    top: -15px;
+                    right: -15px;
+                    background-color: red;
+                    color: white;
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
         }
 
         .menu-icon {
             width: 30px;
-            height: auto;
+            /* justify-self: flex-end; */
 
             @media(width>=calc(1200/16*1rem)) {
                 display: none;
@@ -78,56 +99,6 @@
 
         }
 
-        .mobile-menu {
-
-            list-style: none;
-            gap: 40px;
-
-            position: absolute;
-            bottom: 0;
-            top: 0;
-            background-color: var(--hero-bg-c);
-            left: 0;
-            right: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            .close {
-                width: 20px;
-                position: absolute;
-                right: 30px;
-                top: 30px;
-                cursor: pointer;
-            }
-
-            a {
-                color: var(--nav-link-c);
-                font-size: 18px;
-                text-decoration: none;
-                text-transform: capitalize;
-                font-weight: semibold;
-                position: relative;
-
-                &::after {
-                    content: '';
-                    position: absolute;
-                    width: 0%;
-                    left: 0;
-                    bottom: -5px;
-                    height: 3px;
-                    background-color: var(--c-dark-teal);
-                    border-radius: 10px;
-                    transition: 500ms ease-in-out;
-                }
-
-                &:hover::after {
-                    width: 100%;
-                }
-            }
-
-        }
     }
 
     img {
