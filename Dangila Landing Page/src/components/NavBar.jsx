@@ -19,10 +19,17 @@ function NavBar() {
 
     const handleMenuToggle = () => {
         setIsMenuOpen(!isMenuOpen);
+
+        if (isSearchOpen) {
+            setIsSearchOpen(false);
+        }
     };
 
     const handleSearchToggle = () => {
         setIsSearchOpen(!isSearchOpen);
+        if (isMenuOpen) {
+            setIsMenuOpen(false);
+        }
     };
 
     return (

@@ -1,48 +1,37 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../styles/Search.css'
-import aboutImage from '../assets/about-image.png'
+
+import itemsData from '../data/itemsData'
 
 function Search() {
+    const [items, setItems] = useState(itemsData)
+    const [searchTerm, setSearchTerm] = useState('')
+
+    useEffect(() => {
+        const filteredItems = itemsData.filter(item => {
+            return item.name.toLowerCase().includes(searchTerm.toLowerCase()) || item.description.toLowerCase().includes(searchTerm.toLowerCase())
+        })
+        setItems(filteredItems)
+    }, [searchTerm])
+
     return (
         <div className='search-bg-area'>
             <div className='search-area'>
-                <input type="text" placeholder='Search for products' className='search-input' />
+                <input type="text" placeholder='Search for products' className='search-input' onChange={(e) => setSearchTerm(e.target.value)} value={searchTerm} />
                 <button className='search-button'>Search</button>
             </div>
 
             <div className='searched-items-container'>
-                <div className="searched-item">
-                    <img src={aboutImage} alt="searched item" className='searched-item-image' />
-                    <div>
-                        <p className='searched-item-name'>Dangila lotion 27</p>
-                        <p className='searched-item-desc'>Removes dark marks and nature your skin for 24 hours.</p>
-                        <button className='add-to-cart-button'>Add to Cart</button>
+                {items.map((item, index) => (
+                    <div className="searched-item" key={index}>
+                        <img src={item.image} alt={`${item.name} icon`} className='searched-item-image' />
+                        <div className='searched-item-desc-container'>
+                            <p className='searched-item-name'>{item.name}</p>
+                            <p className='searched-item-desc'>{item.description}</p>
+                            <button className='add-to-cart-button'>Add to Cart : R{item.price}</button>
+                        </div>
                     </div>
-                </div>
-                <div className="searched-item">
-                    <img src={aboutImage} alt="searched item" className='searched-item-image' />
-                    <div>
-                        <p className='searched-item-name'>Dangila lotion 27</p>
-                        <p className='searched-item-desc'>Removes dark marks and nature your skin for 24 hours.</p>
-                        <button className='add-to-cart-button'>Add to Cart</button>
-                    </div>
-                </div>
-                <div className="searched-item">
-                    <img src={aboutImage} alt="searched item" className='searched-item-image' />
-                    <div>
-                        <p className='searched-item-name'>Dangila lotion 27</p>
-                        <p className='searched-item-desc'>Removes dark marks and nature your skin for 24 hours.</p>
-                        <button className='add-to-cart-button'>Add to Cart</button>
-                    </div>
-                </div>
-                <div className="searched-item">
-                    <img src={aboutImage} alt="searched item" className='searched-item-image' />
-                    <div>
-                        <p className='searched-item-name'>Dangila lotion 27</p>
-                        <p className='searched-item-desc'>Removes dark marks and nature your skin for 24 hours.</p>
-                        <button className='add-to-cart-button'>Add to Cart</button>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     )
