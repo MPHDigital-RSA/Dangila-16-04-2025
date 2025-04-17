@@ -1,4 +1,3 @@
-import './App.css'
 import Benefits from './components/Benefits'
 import Hero from './components/Hero'
 import NavBar from './components/NavBar'

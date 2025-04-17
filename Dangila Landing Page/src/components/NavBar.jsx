@@ -8,15 +8,21 @@ import profile from '../assets/Profile.svg'
 
 import '../styles/Navbar.css'
 import MobileNav from './MobileNav'
+import Search from './Search'
 
 function NavBar() {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
 
     const handleMenuToggle = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleSearchToggle = () => {
+        setIsSearchOpen(!isSearchOpen);
     };
 
     return (
@@ -33,7 +39,7 @@ function NavBar() {
                 </ul>
 
                 <div className="search-cart-profile">
-                    <img src={search} alt="search icon" width='18.75' height='18.75' />
+                    <img src={search} alt="search icon" width='18.75' height='18.75' onClick={handleSearchToggle} />
                     <div className='cart'>
                         <img src={cart} alt="cart icon" width='19.69' height='18.98' className='cart-image' />
                         <p className='cart-value'>0</p>
@@ -43,9 +49,11 @@ function NavBar() {
 
                 <img src={menu} alt="menu icon" width='37.5' height='21.88' className='menu-icon' onClick={handleMenuToggle} />
 
-                {/* conditionals */}
+                {/* CONDITIONALS */}
 
                 {isMenuOpen && <MobileNav handleMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} />}
+
+                {isSearchOpen && <Search />}
 
 
             </nav>
